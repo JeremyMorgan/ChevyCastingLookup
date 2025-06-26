@@ -1,0 +1,11 @@
+casting_number,name,description,material,weight,dimensions,manufacturer,year_introduced
+1001,"Engine Block","V8 engine block for high-performance applications","Cast Iron",75.5,"24x18x12","ABC Castings",1985
+1002,"Cylinder Head","4-cylinder head with improved cooling channels","Aluminum",12.3,"18x12x4","XYZ Manufacturing",1990
+1003,"Crankshaft","Forged steel crankshaft for durability","Steel",28.7,"36x6x6","Precision Parts Inc.",1988
+1004,"Connecting Rod","High-strength connecting rod for performance engines","Forged Steel",1.2,"8x2x1","Performance Engineering",1992
+1005,"Piston","Lightweight piston with thermal barrier coating","Aluminum Alloy",0.8,"4x4x5","Advanced Components",1995
+1006,"Camshaft","Performance camshaft with hardened lobes","Hardened Steel",5.6,"24x2x2","Valve Train Specialists",1987
+1007,"Intake Manifold","Flow-optimized intake manifold","Aluminum",8.9,"18x12x8","Flow Masters",1993
+1008,"Exhaust Manifold","High-flow exhaust manifold","Cast Iron",12.4,"16x10x6","Exhaust Systems Co.",1986
+1009,"Valve Cover","Decorative valve cover with improved sealing","Aluminum",3.2,"16x8x3","Custom Components",1991
+1010,"Oil Pan","Deep sump oil pan for increased capacity","Stamped Steel",6.7,"20x14x8","Lubrication Systems",1989
