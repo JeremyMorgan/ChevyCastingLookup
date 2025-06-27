@@ -47,7 +47,7 @@ CastingLookup/
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/JeremyMorgan/CastingLookup.git
+git clone https://github.com/yourusername/CastingLookup.git
 cd CastingLookup
 ```
 
@@ -210,6 +210,4 @@ The API uses SQLite as its database. The database file is created at `./castings
 
 ## License
 
-[Creative Commons Universal CC 1.0 Universal](LICENSE)
-
-
+[MIT License](LICENSE)

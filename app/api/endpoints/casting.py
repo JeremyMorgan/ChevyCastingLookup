@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 
 from app.db.database import get_db
 from app.models.casting import Casting as CastingModel
-from app.schemas.casting import Casting, CastingCreate, CastingUpdate
+from app.schemas.casting import Casting
 
 router = APIRouter()
 
@@ -43,87 +43,6 @@ def get_casting_by_id(
     
     return casting
 
-
-@router.post("/", response_model=Casting)
-def create_casting(
-    casting: CastingCreate,
-    db: Session = Depends(get_db)
-):
-    """
-    Create a new casting.
-    """
-    # Check if casting with the same number already exists
-    db_casting = db.query(CastingModel).filter(
-        CastingModel.casting == casting.casting
-    ).first()
-    
-    if db_casting:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Casting with number {casting.casting} already exists"
-        )
-    
-    # Create new casting
-    db_casting = CastingModel(**casting.dict())
-    db.add(db_casting)
-    db.commit()
-    db.refresh(db_casting)
-    
-    return db_casting
-
-
-@router.put("/{casting_id}", response_model=Casting)
-def update_casting(
-    casting_id: str,
-    casting: CastingUpdate,
-    db: Session = Depends(get_db)
-):
-    """
-    Update an existing casting.
-    """
-    db_casting = db.query(CastingModel).filter(
-        CastingModel.casting == casting_id
-    ).first()
-    
-    if db_casting is None:
-        raise HTTPException(
-            status_code=404,
-            detail=f"Casting with number {casting_id} not found"
-        )
-    
-    # Update casting attributes
-    update_data = casting.dict(exclude_unset=True)
-    for key, value in update_data.items():
-        setattr(db_casting, key, value)
-    
-    db.commit()
-    db.refresh(db_casting)
-    
-    return db_casting
-
-
-@router.delete("/{casting_id}", response_model=Casting)
-def delete_casting(
-    casting_id: str,
-    db: Session = Depends(get_db)
-):
-    """
-    Delete a casting.
-    """
-    db_casting = db.query(CastingModel).filter(
-        CastingModel.casting == casting_id
-    ).first()
-    
-    if db_casting is None:
-        raise HTTPException(
-            status_code=404,
-            detail=f"Casting with number {casting_id} not found"
-        )
-    
-    db.delete(db_casting)
-    db.commit()
-    
-    return db_casting
 
 
 @router.get("/search/", response_model=List[Casting])
