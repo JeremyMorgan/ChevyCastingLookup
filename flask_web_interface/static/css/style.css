@@ -1,170 +1,658 @@
-/* Custom styles for Chevy Casting Lookup */
+/* Professional Chevy Casting Lookup Styles */
+
+:root {
+    --primary-color: #FF6600;
+    --secondary-color: #FF8533;
+    --accent-color: #4A9EFF;
+    --success-color: #38a169;
+    --warning-color: #d69e2e;
+    --danger-color: #e53e3e;
+    --light-bg: #1a1a1a;
+    --card-bg: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #e0e0e0;
+    --text-muted: #a0a0a0;
+    --border-color: #404040;
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+}
 
 body {
-    background-color: #f8f9fa;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
 }
 
 .navbar-brand {
-    font-weight: bold;
-    font-size: 1.5rem;
+    font-weight: 700;
+    font-size: 1.75rem;
+    color: var(--primary-color) !important;
+    letter-spacing: -0.025em;
 }
 
 .card {
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    transition: box-shadow 0.15s ease-in-out;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
 }
 
 .card:hover {
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
 }
 
+/* Enhanced Typography */
+.display-4 {
+    font-weight: 800;
+    color: var(--primary-color);
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+}
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.025em;
+}
+
+/* Professional Card Headers */
+.card-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border-bottom: none;
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px 12px 0 0 !important;
+}
+
+.card-header h5 {
+    color: white;
+    font-weight: 600;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.card-body {
+    padding: 2rem 1.5rem;
+}
+
+/* Enhanced Table Styling */
 .table th {
     border-top: none;
     font-weight: 600;
+    color: var(--text-primary);
+    background-color: var(--light-bg);
+    padding: 1rem 0.75rem;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.table {
+    color: var(--text-primary);
 }
 
 .table-hover tbody tr:hover {
-    background-color: rgba(0, 123, 255, 0.075);
+    background-color: rgba(255, 102, 0, 0.1);
+    transform: scale(1.001);
+    transition: all 0.2s ease;
 }
 
+/* Professional Button Styling */
 .btn {
-    border-radius: 0.375rem;
-    font-weight: 500;
-    transition: all 0.15s ease-in-out;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    position: relative;
+    overflow: hidden;
 }
 
 .btn:hover {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
-.alert {
-    border: none;
-    border-radius: 0.5rem;
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #e55a00 0%, #ff7a1a 100%);
+    color: white;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, var(--success-color) 0%, #2f855a 100%);
+    color: white;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #2f855a 0%, #276749 100%);
+    color: white;
+}
+
+.btn-outline-primary {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    background: transparent;
+}
+
+.btn-outline-primary:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    border-radius: 10px;
+}
+
+/* Enhanced Form Styling */
+.form-control {
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background-color: var(--card-bg);
 }
 
 .form-control:focus {
-    border-color: #86b7fe;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.2);
+    background-color: var(--card-bg);
+    outline: none;
+}
+
+.form-control-lg {
+    padding: 1rem 1.25rem;
+    font-size: 1.1rem;
+    border-radius: 10px;
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
 }
 
 .input-group .form-control:focus {
     z-index: 3;
 }
 
-/* Custom styling for casting details */
+.input-group .btn {
+    border-radius: 0 10px 10px 0;
+    z-index: 2;
+}
+
+.input-group .form-control {
+    border-radius: 10px 0 0 10px;
+}
+
+/* Professional Alert Styling */
+.alert {
+    border: none;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    font-weight: 500;
+    border-left: 4px solid;
+}
+
+.alert-success {
+    background-color: rgba(56, 161, 105, 0.1);
+    color: var(--success-color);
+    border-left-color: var(--success-color);
+}
+
+.alert-danger {
+    background-color: rgba(229, 62, 62, 0.1);
+    color: var(--danger-color);
+    border-left-color: var(--danger-color);
+}
+
+.alert-warning {
+    background-color: rgba(214, 158, 46, 0.1);
+    color: var(--warning-color);
+    border-left-color: var(--warning-color);
+}
+
+/* Professional Card Variations */
 .casting-detail-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: white;
+    border: none;
+    box-shadow: var(--shadow-lg);
+}
+
+.casting-detail-card .card-body {
+    padding: 2rem;
 }
 
 .power-range-card {
-    background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+    background: linear-gradient(135deg, var(--accent-color) 0%, #3d8bff 100%);
     color: white;
+    border: none;
+    box-shadow: var(--shadow-lg);
 }
 
-/* Loading spinner */
-.spinner-border-sm {
-    width: 1rem;
-    height: 1rem;
+.power-range-card .card-body {
+    padding: 2rem;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .display-4 {
-        font-size: 2rem;
-    }
-    
-    .btn-lg {
-        padding: 0.5rem 1rem;
-        font-size: 1rem;
-    }
-    
-    .table-responsive {
-        font-size: 0.875rem;
-    }
+/* Enhanced Quick Action Cards */
+.quick-action-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Footer styling */
-footer {
-    margin-top: auto;
+.quick-action-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 100%);
 }
 
-/* Custom badge colors */
+.quick-action-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--accent-color);
+}
+
+.quick-action-card .card-body {
+    padding: 2rem 1.5rem;
+    text-align: center;
+}
+
+.quick-action-card .card-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.quick-action-card .card-text {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+/* Professional Badge Styling */
+.badge {
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
 .badge.bg-success {
-    background-color: #198754 !important;
+    background: linear-gradient(135deg, var(--success-color) 0%, #2f855a 100%) !important;
+    color: white;
+    box-shadow: 0 2px 4px rgba(56, 161, 105, 0.3);
 }
 
 .badge.bg-danger {
-    background-color: #dc3545 !important;
+    background: linear-gradient(135deg, var(--danger-color) 0%, #c53030 100%) !important;
+    color: white;
+    box-shadow: 0 2px 4px rgba(229, 62, 62, 0.3);
 }
 
-/* Search form enhancements */
-.search-form {
-    background: white;
-    border-radius: 0.5rem;
-    padding: 2rem;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-}
-
-/* Quick facts cards */
-.quick-fact-card {
-    transition: transform 0.2s ease-in-out;
-}
-
-.quick-fact-card:hover {
-    transform: scale(1.05);
-}
-
-/* Status indicators */
+/* Enhanced Status Indicators */
 .status-indicator {
     display: inline-block;
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    margin-right: 5px;
+    margin-right: 8px;
+    position: relative;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
 }
 
 .status-connected {
-    background-color: #28a745;
+    background: var(--success-color);
+    animation: pulse-success 2s infinite;
 }
 
 .status-disconnected {
-    background-color: #dc3545;
+    background: var(--danger-color);
+    animation: pulse-danger 2s infinite;
 }
 
-/* Animation for loading states */
-@keyframes pulse {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.5;
-    }
-    100% {
-        opacity: 1;
-    }
+@keyframes pulse-success {
+    0% { box-shadow: 0 0 0 0 rgba(56, 161, 105, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(56, 161, 105, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(56, 161, 105, 0); }
+}
+
+@keyframes pulse-danger {
+    0% { box-shadow: 0 0 0 0 rgba(229, 62, 62, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(229, 62, 62, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(229, 62, 62, 0); }
+}
+
+/* Loading States */
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
 }
 
 .loading {
     animation: pulse 1.5s ease-in-out infinite;
 }
 
-/* Custom scrollbar for webkit browsers */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Professional Footer */
+footer {
+    margin-top: auto;
+    background: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 0;
+    color: var(--text-secondary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+    }
+    
+    .lead {
+        font-size: 1.1rem;
+    }
+    
+    .btn-lg {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.95rem;
+    }
+    
+    .card-body {
+        padding: 1.5rem 1rem;
+    }
+    
+    .table-responsive {
+        font-size: 0.875rem;
+    }
+    
+    .quick-action-card .card-body {
+        padding: 1.5rem 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .card-body {
+        padding: 1.25rem 0.875rem;
+    }
+    
+    .btn {
+        font-size: 0.8rem;
+        padding: 0.625rem 1.25rem;
+    }
+    
+    .btn-lg {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.875rem;
+    }
+}
+
+/* Professional Search Form */
+.search-form {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+}
+
+/* Enhanced Collapse Button */
+.btn-link {
+    color: white !important;
+    text-decoration: none !important;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-link:hover {
+    color: rgba(255, 255, 255, 0.8) !important;
+    transform: translateX(4px);
+}
+
+/* Professional Scrollbar */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: var(--light-bg);
+    border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 4px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border-radius: 5px;
+    transition: all 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: linear-gradient(135deg, #e55a00 0%, #ff7a1a 100%);
+}
+
+/* Enhanced Focus States */
+.form-control:focus,
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.25);
+}
+
+/* Professional Transitions */
+* {
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Utility Classes */
+.text-gradient {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+.shadow-custom {
+    box-shadow: var(--shadow-lg);
+}
+
+.border-gradient {
+    border: 2px solid;
+    border-image: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%) 1;
+}
+
+/* Dark Theme Enhancements */
+.navbar {
+    background-color: var(--card-bg) !important;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.navbar-brand {
+    color: var(--primary-color) !important;
+}
+
+.navbar-nav .nav-link {
+    color: var(--text-secondary) !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--accent-color) !important;
+}
+
+/* Navbar toggler for dark theme */
+.navbar-toggler {
+    border-color: var(--border-color);
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(74, 158, 255, 0.25);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28224, 224, 224, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Enhanced input styling for dark theme */
+.form-control {
+    background-color: var(--light-bg);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.form-control::placeholder {
+    color: var(--text-muted);
+}
+
+/* Dark theme table styling */
+.table-dark {
+    --bs-table-bg: var(--card-bg);
+    --bs-table-striped-bg: var(--light-bg);
+    --bs-table-hover-bg: rgba(255, 102, 0, 0.1);
+    color: var(--text-primary);
+}
+
+/* Enhanced alert styling for dark theme */
+.alert-info {
+    background-color: rgba(74, 158, 255, 0.15);
+    color: var(--accent-color);
+    border-left-color: var(--accent-color);
+}
+
+/* Dropdown styling for dark theme */
+.dropdown-menu {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+}
+
+.dropdown-item {
+    color: var(--text-secondary);
+}
+
+.dropdown-item:hover {
+    background-color: var(--light-bg);
+    color: var(--text-primary);
+}
+
+/* Modal styling for dark theme */
+.modal-content {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-footer {
+    border-top: 1px solid var(--border-color);
+}
+
+/* Enhanced glow effects for Chevy Orange */
+.btn-primary {
+    box-shadow: 0 0 20px rgba(255, 102, 0, 0.3);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 30px rgba(255, 102, 0, 0.5);
+}
+
+/* Light blue accent glow */
+.btn-outline-primary:focus,
+.form-control:focus {
+    box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.25), 0 0 20px rgba(74, 158, 255, 0.1);
+}
+
+/* Enhanced card hover effects */
+.card:hover {
+    border-color: var(--accent-color);
+    box-shadow: var(--shadow-lg), 0 0 20px rgba(74, 158, 255, 0.1);
+}
+
+/* Status indicator enhancements */
+.status-connected {
+    box-shadow: 0 0 10px rgba(56, 161, 105, 0.5);
+}
+
+.status-disconnected {
+    box-shadow: 0 0 10px rgba(229, 62, 62, 0.5);
+}
+
+/* Professional Animation Classes */
+.fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-up {
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Enhanced Container Spacing */
+.container, .container-fluid {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .container, .container-fluid {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
 }

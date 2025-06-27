@@ -8,7 +8,7 @@
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="{{ url_for('index') }}">
                 <strong>Chevy Casting Lookup</strong>
@@ -44,7 +44,7 @@
         {% block content %}{% endblock %}
     </main>
 
-    <footer class="bg-dark text-light mt-5 py-4">
+    <footer class="mt-5 py-4">
         <div class="container text-center">
             <p>&copy; 2025 Chevy Casting Lookup. Built with Flask and FastAPI.</p>
         </div>
