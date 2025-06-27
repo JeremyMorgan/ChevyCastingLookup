@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}Search Results - Chevy Casting Lookup{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Search Results</h2>
+            <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">New Search</a>
+        </div>
+
+        {% if search_params %}
+        <div class="alert alert-info">
+            <strong>Search criteria:</strong>
+            {% if search_params.casting_number %}
+                Casting Number: <strong>{{ search_params.casting_number }}</strong>
+            {% endif %}
+            {% if search_params.years %}
+                Years: <strong>{{ search_params.years }}</strong>
+            {% endif %}
+            {% if search_params.cid %}
+                CID: <strong>{{ search_params.cid }}</strong>
+            {% endif %}
+            {% if search_params.main_caps %}
+                Main Caps: <strong>{{ search_params.main_caps }}</strong>
+            {% endif %}
+            {% if search_params.comments %}
+                Comments: <strong>{{ search_params.comments }}</strong>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if castings %}
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Found {{ castings|length }} result(s)</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Casting Number</th>
+                                <th>Years</th>
+                                <th>CID</th>
+                                <th>Power Range</th>
+                                <th>Main Caps</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for casting in castings %}
+                            <tr>
+                                <td>
+                                    <strong>{{ casting.casting }}</strong>
+                                </td>
+                                <td>{{ casting.years or 'N/A' }}</td>
+                                <td>{{ casting.cid or 'N/A' }}</td>
+                                <td>
+                                    {% if casting.low_power and casting.high_power %}
+                                        {{ casting.low_power }} - {{ casting.high_power }}
+                                    {% elif casting.low_power %}
+                                        {{ casting.low_power }}
+                                    {% elif casting.high_power %}
+                                        {{ casting.high_power }}
+                                    {% else %}
+                                        N/A
+                                    {% endif %}
+                                </td>
+                                <td>{{ casting.main_caps or 'N/A' }}</td>
+                                <td>
+                                    <a href="{{ url_for('casting_detail', casting_id=casting.casting) }}" 
+                                       class="btn btn-sm btn-primary">View Details</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination would go here if implemented -->
+        {% if show_pagination %}
+        <nav aria-label="Search results pagination" class="mt-4">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <span class="page-link">Previous</span>
+                </li>
+                <li class="page-item active">
+                    <span class="page-link">1</span>
+                </li>
+                <li class="page-item disabled">
+                    <span class="page-link">Next</span>
+                </li>
+            </ul>
+        </nav>
+        {% endif %}
+
+        {% else %}
+        <div class="alert alert-warning text-center">
+            <h4>No Results Found</h4>
+            <p>No casting numbers match your search criteria. Try:</p>
+            <ul class="list-unstyled">
+                <li>• Checking the spelling of the casting number</li>
+                <li>• Using fewer search criteria</li>
+                <li>• Browsing all available castings</li>
+            </ul>
+            <div class="mt-3">
+                <a href="{{ url_for('index') }}" class="btn btn-primary me-2">Try Another Search</a>
+                <a href="{{ url_for('browse_all') }}" class="btn btn-outline-primary">Browse All</a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

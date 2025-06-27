@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+{% block title %}{{ casting.casting }} - Chevy Casting Lookup{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Casting Details</h2>
+            <div>
+                <a href="javascript:history.back()" class="btn btn-outline-secondary me-2">Back</a>
+                <a href="{{ url_for('index') }}" class="btn btn-outline-primary">New Search</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">
+                    <i class="fas fa-cog"></i> Casting Number: {{ casting.casting }}
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Basic Information</h5>
+                        <table class="table table-borderless">
+                            <tr>
+                                <td><strong>Casting Number:</strong></td>
+                                <td>{{ casting.casting }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Production Years:</strong></td>
+                                <td>{{ casting.years or 'Not specified' }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Displacement (CID):</strong></td>
+                                <td>
+                                    {% if casting.cid %}
+                                        {{ casting.cid }} cubic inches
+                                    {% else %}
+                                        Not specified
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Engine Specifications</h5>
+                        <table class="table table-borderless">
+                            <tr>
+                                <td><strong>Low Power:</strong></td>
+                                <td>{{ casting.low_power or 'Not specified' }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>High Power:</strong></td>
+                                <td>{{ casting.high_power or 'Not specified' }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Main Caps:</strong></td>
+                                <td>{{ casting.main_caps or 'Not specified' }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                {% if casting.comments %}
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <h5>Additional Comments</h5>
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i>
+                            {{ casting.comments }}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Power Range Visualization -->
+                {% if casting.low_power and casting.high_power %}
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <h5>Power Range</h5>
+                        <div class="card bg-light">
+                            <div class="card-body text-center">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="text-center">
+                                        <h6 class="text-muted">Low Power</h6>
+                                        <h4 class="text-success">{{ casting.low_power }}</h4>
+                                    </div>
+                                    <div class="text-center">
+                                        <i class="fas fa-arrow-right fa-2x text-muted"></i>
+                                    </div>
+                                    <div class="text-center">
+                                        <h6 class="text-muted">High Power</h6>
+                                        <h4 class="text-danger">{{ casting.high_power }}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Quick Facts -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <h5>Quick Facts</h5>
+                        <div class="row">
+                            {% if casting.years %}
+                            <div class="col-md-3 mb-2">
+                                <div class="card text-center h-100">
+                                    <div class="card-body">
+                                        <i class="fas fa-calendar-alt fa-2x text-primary mb-2"></i>
+                                        <h6>Years</h6>
+                                        <small>{{ casting.years }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% if casting.cid %}
+                            <div class="col-md-3 mb-2">
+                                <div class="card text-center h-100">
+                                    <div class="card-body">
+                                        <i class="fas fa-tachometer-alt fa-2x text-info mb-2"></i>
+                                        <h6>Displacement</h6>
+                                        <small>{{ casting.cid }} CID</small>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% if casting.main_caps %}
+                            <div class="col-md-3 mb-2">
+                                <div class="card text-center h-100">
+                                    <div class="card-body">
+                                        <i class="fas fa-wrench fa-2x text-warning mb-2"></i>
+                                        <h6>Main Caps</h6>
+                                        <small>{{ casting.main_caps }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            <div class="col-md-3 mb-2">
+                                <div class="card text-center h-100">
+                                    <div class="card-body">
+                                        <i class="fas fa-hashtag fa-2x text-secondary mb-2"></i>
+                                        <h6>Casting ID</h6>
+                                        <small>{{ casting.id }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Actions -->
+        <div class="row mt-4">
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h6>Search Similar</h6>
+                        <p class="text-muted small">Find castings with similar specifications</p>
+                        {% if casting.cid %}
+                        <a href="{{ url_for('advanced_search') }}?cid={{ casting.cid }}" 
+                           class="btn btn-outline-primary btn-sm">Same CID</a>
+                        {% endif %}
+                        {% if casting.years %}
+                        <a href="{{ url_for('advanced_search') }}?years={{ casting.years }}" 
+                           class="btn btn-outline-success btn-sm">Same Years</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h6>Browse More</h6>
+                        <p class="text-muted small">Explore other casting numbers</p>
+                        <a href="{{ url_for('browse_all') }}" class="btn btn-outline-info btn-sm">Browse All</a>
+                        <a href="{{ url_for('index') }}" class="btn btn-outline-secondary btn-sm">New Search</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
